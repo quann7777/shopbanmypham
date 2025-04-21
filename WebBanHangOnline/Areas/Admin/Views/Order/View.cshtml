@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Thanh toán</label>
+                        <label>Hình thức thanh toán</label>
                         @if (Model.TypePayment == 1)
                         {
                             <p class="form-control">COD</p>
@@ -81,6 +81,12 @@
                         {
                             <p class="form-control">Chuyển khoản</p>
                         }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Phí vận chuyển</label>
+                        <p class="form-control">@Model.MoneyShip</p>
                     </div>
                 </div>
             </div>
@@ -92,6 +98,9 @@
                 <div class="col-12">
                     @Html.Action("Partial_SanPham", "Order", new { id = Model.Id })
                 </div>
+            </div>
+            <div class="form-group">
+                <a href="/admin/order" class="btn btn-success">Quay lại</a>
             </div>
         </div>
         <!-- /.card-body -->

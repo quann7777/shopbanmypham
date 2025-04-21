@@ -39,7 +39,6 @@
                     </p>
                     <div id="slider-range"></div>
                     <div class="filter_button"><span>filter</span></div>
-
                     <hr />
                     @Html.Action("Refresh", "Home")
                 </div>
@@ -117,7 +116,7 @@
                                         </ul>
                                     </li>
                                 </ul>
-                                <div class="pages d-flex flex-row align-items-center">
+                                @*<div class="pages d-flex flex-row align-items-center">
                                     <div class="page_current">
                                         <span>1</span>
                                         <ul class="page_selection">
@@ -128,7 +127,7 @@
                                     </div>
                                     <div class="page_total"><span>of</span> 3</div>
                                     <div id="next_page" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
-                                </div>
+                                </div>*@
 
                             </div>
 
@@ -163,30 +162,30 @@
                                                         </div>
                                                     }
                                                 }
-                                                <div class="product_info">
-                                                    <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
-                                                    @*<div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</div>
-            <div style="display:none;" class="in_product_price"> @item.Price</div>*@
-                                                    @if (ViewBag.PromotionTypes != null)
+                                            <div class="product_info">
+                                                <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
+                                                @*<div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) VNĐ</div>
+        <div style="display:none;" class="in_product_price"> @item.Price</div>*@
+                                                @if (ViewBag.PromotionTypes != null)
+                                                {
+                                                    var promotionType = ViewBag.PromotionTypes[item.Id];
+                                                    if (promotionType != null)
                                                     {
-                                                        var promotionType = ViewBag.PromotionTypes[item.Id];
-                                                        if (promotionType != null)
-                                                        {
-                                                            <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price - (item.Price * promotionType) / 100, 0)₫<span>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</span></div>
-                                                            <div style="display:none;" class="in_product_price"> @WebBanHangOnline.Common.Common.FormatNumber(item.Price - (item.Price * promotionType) / 100, 0)₫</div>
-                                                        }
-                                                        else
-                                                        {
-                                                <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</div>
-                                                <div style="display:none;" class="in_product_price"> @item.Price₫</div>
-                                                        }
+                                                        <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price - (item.Price * promotionType) / 100, 0)₫<span>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</span></div>
+                                                        <div style="display:none;" class="in_product_price"> @WebBanHangOnline.Common.Common.FormatNumber(item.Price - (item.Price * promotionType) / 100, 0)</div>
                                                     }
                                                     else
                                                     {
-                                                <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</div>
-                                                <div style="display:none;" class="in_product_price"> @item.Price₫</div>
+                                                        <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</div>
+                                                        <div style="display:none;" class="in_product_price"> @item.Price</div>
                                                     }
-                                                </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</div>
+                                                    <div style="display:none;" class="in_product_price"> @item.Price</div>
+                                                }
+                                            </div>
                                             </div>
                                             @*<div class="red_button add_to_cart_button"><a href="#" class="btnAddToCart" data-id="@item.Id">add to cart</a></div>*@
                                         </div>

@@ -149,11 +149,11 @@
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
                                                         @Html.CheckBoxFor(x => x.IsHome, new { @class = "custom-control-input", id = "IsHomeCheckbox" })
-                                                        <label for="IsHomeCheckbox" class="custom-control-label">Hot</label>
+                                                        <label for="IsHomeCheckbox" class="custom-control-label">Home</label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-3">
+                                            @*<div class="col-3">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
                                                         @Html.CheckBoxFor(x => x.IsFeature, new { @class = "custom-control-input", id = "IsFeatureCheckbox" })
@@ -168,7 +168,7 @@
                                                         <label for="IsSaleCheckbox" class="custom-control-label">Khuyến mãi</label>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>*@
                                         </div>
 
                                     </div>
@@ -236,8 +236,8 @@
 
                             </div><!-- /.card-body -->
                             <div class="form-group">
-                                <a href="/admin/products" class="btn btn-danger">Quay lại</a>
-                                <button type="submit" class="btn btn-success">Thêm</button>
+                                <a href="/admin/products" class="btn btn-success">Quay lại</a>
+                                <button type="submit" class="btn btn-primary">Thêm</button>
                             </div>
                         </div>
                     }

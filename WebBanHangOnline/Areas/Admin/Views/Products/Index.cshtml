@@ -73,11 +73,19 @@
                         <th><input type="checkbox" id="SelectAll" /></th>
                         <th>STT</th>
                         <th>Hình ảnh</th>
-                        <th>Tên sản phẩm</th>
+                        <th>
+                            @*Tên sản phẩm*@
+                            @Html.ActionLink("Tên sản phẩm", "Index", new { sortName = ViewBag.NameSortParm })
+                        </th>
                         <th>Thể loại</th>
                         <th>Thương hiệu</th>
-                        <th>Giá</th>
-                        <th>Ngày tạo</th>
+                        <th>
+                            @*Giá*@
+                            @Html.ActionLink("Giá", "Index", new { sortName = ViewBag.PriceSortParm })
+                        </th>
+                        <th>
+                            @Html.ActionLink("Ngày tạo", "Index", new { sortName = ViewBag.DateSortParm })
+                        </th>
                         <th>Home</th>
                         @*<th>Sale</th>*@
                         <th>Hiển thị</th>

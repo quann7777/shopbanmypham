@@ -92,7 +92,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                 item.IsActive = !item.IsActive;
                 db.Entry(item).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                return Json(new { success = true, isActive = item.IsActive });
+                return Json(new { success = true, IsActive = item.IsActive });
             }
             return Json(new { success = false });
         }

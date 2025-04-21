@@ -20,7 +20,7 @@ namespace WebBanHangOnline.Controllers
             {
                 page = 1;
             }
-            IEnumerable<News> items = db.News.OrderByDescending(x=>x.CreatedDate);
+            IEnumerable<News> items = db.News.Where(x=>x.IsActive).OrderByDescending(x=>x.CreatedDate);
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
             items = items.ToPagedList(pageIndex, pageSize);
             ViewBag.PageSize = pageSize;

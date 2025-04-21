@@ -215,61 +215,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202405051249557_CreatDB.cs" />
-    <Compile Include="Migrations\202405051249557_CreatDB.Designer.cs">
-      <DependentUpon>202405051249557_CreatDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405051253265_update.cs" />
-    <Compile Include="Migrations\202405051253265_update.Designer.cs">
-      <DependentUpon>202405051253265_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405051257076_update2.cs" />
-    <Compile Include="Migrations\202405051257076_update2.Designer.cs">
-      <DependentUpon>202405051257076_update2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405051443149_update1.cs" />
-    <Compile Include="Migrations\202405051443149_update1.Designer.cs">
-      <DependentUpon>202405051443149_update1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405070057423_update752024.cs" />
-    <Compile Include="Migrations\202405070057423_update752024.Designer.cs">
-      <DependentUpon>202405070057423_update752024.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405080201577_update3.cs" />
-    <Compile Include="Migrations\202405080201577_update3.Designer.cs">
-      <DependentUpon>202405080201577_update3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405100207385_updateOrder.cs" />
-    <Compile Include="Migrations\202405100207385_updateOrder.Designer.cs">
-      <DependentUpon>202405100207385_updateOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405100942448_updateOrder1.cs" />
-    <Compile Include="Migrations\202405100942448_updateOrder1.Designer.cs">
-      <DependentUpon>202405100942448_updateOrder1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405120912378_CreateVoucher.cs" />
-    <Compile Include="Migrations\202405120912378_CreateVoucher.Designer.cs">
-      <DependentUpon>202405120912378_CreateVoucher.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405121025415_updateVouchers.cs" />
-    <Compile Include="Migrations\202405121025415_updateVouchers.Designer.cs">
-      <DependentUpon>202405121025415_updateVouchers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405151554511_update15052024..cs" />
-    <Compile Include="Migrations\202405151554511_update15052024..Designer.cs">
-      <DependentUpon>202405151554511_update15052024..cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405161348334_update1652024.cs" />
-    <Compile Include="Migrations\202405161348334_update1652024.Designer.cs">
-      <DependentUpon>202405161348334_update1652024.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405161408319_update16520242.cs" />
-    <Compile Include="Migrations\202405161408319_update16520242.Designer.cs">
-      <DependentUpon>202405161408319_update16520242.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405161516062_update4.cs" />
-    <Compile Include="Migrations\202405161516062_update4.Designer.cs">
-      <DependentUpon>202405161516062_update4.cs</DependentUpon>
+    <Compile Include="Migrations\202406141551066_createdatabase.cs" />
+    <Compile Include="Migrations\202406141551066_createdatabase.designer.cs">
+      <DependentUpon>202406141551066_createdatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3539,47 +3487,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202405051249557_CreatDB.resx">
-      <DependentUpon>202405051249557_CreatDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405051253265_update.resx">
-      <DependentUpon>202405051253265_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405051257076_update2.resx">
-      <DependentUpon>202405051257076_update2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405051443149_update1.resx">
-      <DependentUpon>202405051443149_update1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405070057423_update752024.resx">
-      <DependentUpon>202405070057423_update752024.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405080201577_update3.resx">
-      <DependentUpon>202405080201577_update3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405100207385_updateOrder.resx">
-      <DependentUpon>202405100207385_updateOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405100942448_updateOrder1.resx">
-      <DependentUpon>202405100942448_updateOrder1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405120912378_CreateVoucher.resx">
-      <DependentUpon>202405120912378_CreateVoucher.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405121025415_updateVouchers.resx">
-      <DependentUpon>202405121025415_updateVouchers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405151554511_update15052024..resx">
-      <DependentUpon>202405151554511_update15052024..cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405161348334_update1652024.resx">
-      <DependentUpon>202405161348334_update1652024.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405161408319_update16520242.resx">
-      <DependentUpon>202405161408319_update16520242.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405161516062_update4.resx">
-      <DependentUpon>202405161516062_update4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202406141551066_createdatabase.resx">
+      <DependentUpon>202406141551066_createdatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

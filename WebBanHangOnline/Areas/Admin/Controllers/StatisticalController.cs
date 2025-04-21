@@ -31,6 +31,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                         select new
                         {
                             CreatedDate = o.CreatedDate,
+                            OrderId = od.OrderId,
                             Quantity = od.Quantity,
                             Price = od.Price,
                             PriceProduct = p.Price
@@ -51,9 +52,13 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                 Date = x.Key.Value,
                 TotalBuy = x.Sum(y => y.Quantity * y.PriceProduct),
                 TotalSell = x.Sum(y => y.Quantity * y.Price),
+                TotalProduct = x.Sum(y=>y.Quantity),
+                TotalOrder = x.Select(y => y.OrderId).Distinct().Count()
             }).Select(x => new
             {
                 Date = x.Date,
+                TongsoSp = x.TotalProduct,
+                TongOrder = x.TotalOrder,
                 DoanhThu = x.TotalSell,
                 LoiNhuan = x.TotalSell - x.TotalBuy
             });

@@ -396,7 +396,7 @@ jQuery(document).ready(function($)
 			range: true,
 			min: 0,
 			max: 50000000,
-			values: [ 0	, 10000000 ],
+			values: [ 0	, 5000000 ],
 			slide: function( event, ui )
 			{
 				var fromAmount = formatNumberWithDots(ui.values[0]);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using WebBanHangOnline.Models;
 using WebBanHangOnline.Models.EF;
 
@@ -14,7 +15,7 @@ namespace WebBanHangOnline.Controllers
         // GET: Products
         public ActionResult Index(string SearchText)
         {
-            var items = db.Products.Where(x => x.IsActive).ToList();
+            var items = db.Products.Where(x => x.IsActive).OrderByDescending(x=>x.Id).ToList();
             if (!string.IsNullOrEmpty(SearchText))
             {
                 items = items.Where(x => x.Alias.Contains(SearchText) || x.Title.Contains(SearchText)).ToList();
@@ -25,7 +26,7 @@ namespace WebBanHangOnline.Controllers
             foreach (var item in items)
             {
                 var promotionProduct = db.Promotion_Products.SingleOrDefault(x => x.ProductId == item.Id);
-                if (promotionProduct != null)
+                if (promotionProduct != null && promotionProduct.Promotion.EndDate>=DateTime.Now)
                 {
                     promotionTypes[item.Id] = promotionProduct.Type; // Ánh xạ ID sản phẩm với Promotion Type
                 }
@@ -51,7 +52,7 @@ namespace WebBanHangOnline.Controllers
             ViewBag.ProductDetail = db.ProductDetails.Where(x => x.ProductId == id);
 
             var promotionProduct = db.Promotion_Products.SingleOrDefault(x => x.ProductId == id);
-            if (promotionProduct != null)
+            if (promotionProduct != null && promotionProduct.Promotion.EndDate >= DateTime.Now)
             {
                 ViewBag.PromotionType = promotionProduct.Type;
             }
@@ -64,6 +65,7 @@ namespace WebBanHangOnline.Controllers
             if (id > 0)
             {
                 items = items.Where(x => x.ProductCategoryId == id).ToList();
+                
             }
             var cate = db.ProductCategories.Find(id);
             if (cate != null)
@@ -76,7 +78,7 @@ namespace WebBanHangOnline.Controllers
             foreach (var item in items)
             {
                 var promotionProduct = db.Promotion_Products.SingleOrDefault(x => x.ProductId == item.Id);
-                if (promotionProduct != null)
+                if (promotionProduct != null && promotionProduct.Promotion.EndDate >= DateTime.Now)
                 {
                     promotionTypes[item.Id] = promotionProduct.Type; // Ánh xạ ID sản phẩm với Promotion Type
                 }
@@ -91,13 +93,13 @@ namespace WebBanHangOnline.Controllers
 
         public ActionResult Partial_ItemsByCateId()
         {
-            var items = db.Products.Where(x => x.IsHome && x.IsActive).Take(12).ToList();
+            var items = db.Products.Where(x => x.IsHome && x.IsActive).OrderByDescending(x=>x.CreatedDate).Take(10).ToList();
             var promotionTypes = new Dictionary<int, int?>(); // Tạo từ điển để lưu trữ Promotion Type
 
             foreach (var item in items)
             {
                 var promotionProduct = db.Promotion_Products.SingleOrDefault(x => x.ProductId == item.Id);
-                if (promotionProduct != null)
+                if (promotionProduct != null && promotionProduct.Promotion.EndDate >= DateTime.Now)
                 {
                     promotionTypes[item.Id] = promotionProduct.Type; // Ánh xạ ID sản phẩm với Promotion Type
                 }
@@ -112,7 +114,7 @@ namespace WebBanHangOnline.Controllers
 
         public ActionResult Partial_ProductSales()
         {
-            var items = db.Products.Where(x => x.IsSale && x.IsActive).Take(12).ToList();
+            var items = db.Promotion_Products.Where(x => x.Promotion.StartDate <= DateTime.Now && x.Promotion.EndDate >= DateTime.Now).Take(12).ToList();
             return PartialView(items);
         }
     }

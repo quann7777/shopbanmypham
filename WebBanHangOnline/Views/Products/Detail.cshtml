@@ -63,19 +63,20 @@
                         <h2>@Model.Title</h2>
                         <p>Loại: <a href="/danh-muc-san-pham/@Model.ProductCategory.Alias-@(Model.ProductCategory.Id)">@Model.ProductCategory.Title</a></p>
                         <p>Hãng: <b>@Model.Brand.Title</b></p>
+                        <p>SKU: <b>@Model.ProductCode</b></p>
                         <p>@Model.Description</p>
                         <p>Lượt xem: <b>@Model.ViewCount</b></p>
                     </div>
                     @*<div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(Model.Price, 0) VNĐ</div>*@
-                    @if (ViewBag.PromotionType  > 0)
-        {
-            <div class="original_price">@WebBanHangOnline.Common.Common.FormatNumber(Model.Price, 0)₫</div>
-            <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(Model.Price - (Model.Price * ViewBag.PromotionType) / 100, 0)₫</div>
-        }
-        else
-        {
-                <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(Model.Price, 0)₫</div>
-        }
+                    @if (ViewBag.PromotionType > 0)
+                    {
+                        <div class="original_price">@WebBanHangOnline.Common.Common.FormatNumber(Model.Price, 0)₫</div>
+                        <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(Model.Price - (Model.Price * ViewBag.PromotionType) / 100, 0)₫</div>
+                    }
+                    else
+                    {
+                        <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(Model.Price, 0)₫</div>
+                    }
                     <ul class="star_rating">
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
@@ -126,7 +127,7 @@
                         <ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
                             <li class="tab active" data-active-tab="tab_1"><span>Description</span></li>
                             @*<li class="tab" data-active-tab="tab_2"><span>Additional Information</span></li>*@
-                            <li class="tab" data-active-tab="tab_3"><span>Reviews</span></li>
+                            @*<li class="tab" data-active-tab="tab_3"><span>Reviews</span></li>*@
                         </ul>
                     </div>
                 </div>
@@ -261,13 +262,7 @@
                 if (tQuantity !== '') {
                     quantity = parseInt(tQuantity);
                 }
-                //var maxSizeQuantity = 10; // Giới hạn số lượng tối đa cho size
 
-                //// Kiểm tra số lượng vượt quá giới hạn của size
-                //if (quantity > maxSizeQuantity) {
-                //    alert("Số lượng vượt quá giới hạn cho size!");
-                //    return;
-                //}
                 $.ajax({
                     url: '/shoppingcart/addtocart',
                     type: 'POST',
@@ -280,7 +275,12 @@
                         if (rs.Success) {
                             $('#checkout_items').html(rs.Count);
                             alert(rs.msg);
+                        } else {
+                            alert(rs.msg);
                         }
+                    },
+                    error: function () {
+                        alert("Đã xảy ra lỗi trong quá trình thêm sản phẩm vào giỏ hàng!");
                     }
                 });
             });

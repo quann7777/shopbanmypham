@@ -14,7 +14,7 @@ namespace WebBanHangOnline.Controllers
         // GET: Contact
         public ActionResult Index()
         {
-            return View();
+            return View();  
         }
         public ActionResult Partial_Contact()
         {

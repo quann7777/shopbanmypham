@@ -13,7 +13,7 @@ namespace WebBanHangOnline.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            var items = db.Promotion_Products.Where(x=>x.Promotion.Id == 7).ToList();
+            var items = db.Promotion_Products.Where(x=>x.Promotion.StartDate <= DateTime.Now && x.Promotion.EndDate >= DateTime.Now ).ToList();
             return View(items);
         }
     }

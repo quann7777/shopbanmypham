@@ -67,6 +67,7 @@ namespace WebBanHangOnline.Models
     public class ShoppingCartItem
     {
         public int ProductDetailId { get; set; }
+        public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string Alias { get; set; }
         public string CategoryName { get; set; }

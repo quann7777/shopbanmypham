@@ -25,14 +25,14 @@
                 <td>@(i+1)</td>
                 <td><img src="@item.ProductImg" width="60" /></td>
                 <td>
-                    <a href="/chi-tiet/@item.Alias-p@(item.ProductDetailId)">
+                    <a href="/chi-tiet/@item.Alias-p@(item.ProductId)">
                         @item.ProductName
                     </a>
                 </td>
                 <td>@item.CategoryName</td>
                 <td>@item.Size</td>
                 <td>@Common.FormatNumber(item.Price, 0)</td>
-                <td><a href="#" data-id="@item.ProductDetailId" class="btnUpdate"><input type="number" class="form-control" id="Quantity_@item.ProductDetailId" value="@item.Quantity" min="1"/></a></td>
+                <td><a href="#" data-id="@item.ProductDetailId" class="btnUpdate"><input type="number" class="form-control" id="Quantity_@item.ProductDetailId" value="@item.Quantity" min="1" /></a></td>
                 <th>@Common.FormatNumber(item.TotalPrice, 2)</th>
                 <td>
                     <a href="#" data-id="@item.ProductDetailId" class="btn btn-sm btn-danger btnDelete">Xóa</a>
@@ -46,7 +46,7 @@
             <th class="text-center">@Common.FormatNumber(tongtien, 0)</th>
             <th></th>
         </tr>
-    
+
     }
     else
     {
@@ -55,3 +55,6 @@
         </tr>
     }
 </table>
+@section scripts{
+    <script src="~/Scripts/jsShopping.js"></script>
+}

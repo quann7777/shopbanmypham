@@ -53,6 +53,7 @@
                     <tr>
                         <th>STT</th>
                         <th>Tên Khuyến mãi</th>
+                        <th>Ngày tạo</th>
                         <th>Trạng thái</th>
                         <th>Chi tiết</th>
                         <th></th>
@@ -68,11 +69,10 @@
                             <tr id="trow_@item.Id">
                                 <td>@i</td>
                                 <td>@item.Title</td>
+                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 @{ var status = DateTime.Now;
-                                    if (status < item.EndDate)
+                                    if (status <= item.EndDate && status>= item.StartDate)
                                     {
-
-
                                         <td style="color:dodgerblue">Đang diễn ra</td>
                                     }
                                     else
@@ -125,12 +125,12 @@
                 show: "fade",
                 hide: "fade",
                 modal: true,
-                height: 600,
-                width: 700,
+                height: '600',
+                width: '700',
                 resizable: true,
-                title: 'Quản lý khuyến mãi',
+                title: 'Quản lý khuyến mãi sản phẩm',
                 close: function () {
-                    location.reload();
+                    window.location.reload();
                 }
             });
             $('body').on("click", ".promotiondetail", function () {

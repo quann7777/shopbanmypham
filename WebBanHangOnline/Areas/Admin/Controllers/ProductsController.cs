@@ -1,6 +1,7 @@
 ﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,14 +15,41 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
     {
         // GET: Admin/Products
         ApplicationDbContext db = new ApplicationDbContext();
-        public ActionResult Index(string SearchText, int? page)
+        public ActionResult Index(string SearchText, int? page, string sortName)
         {
             var pageSize = 5;
             if (page == null)
             {
                 page = 1;
             }
-            IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id);
+            IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id).ToList();
+
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortName) ? "name_desc" : "";
+            ViewBag.PriceSortParm = sortName == "price" ? "price_desc" : "price";
+            ViewBag.DateSortParm = sortName == "date" ? "date_desc" : "date";
+
+            switch (sortName)
+            {
+                case "name_desc":
+                    items = items.OrderByDescending(x => x.Title);
+                    break;
+                case "price":
+                    items = items.OrderBy(x => x.Price);
+                    break;
+                case "price_desc":
+                    items = items.OrderByDescending(x => x.Price);
+                    break;
+                case "date":
+                    items = items.OrderBy(x => x.Id);
+                    break;
+                case "date_desc":
+                    items = items.OrderByDescending(x => x.Id);
+                    break;
+                default:
+                    items = items.OrderByDescending(x => x.Id);
+                    break;
+            }
+
             if (!string.IsNullOrEmpty(SearchText))
             {
                 items = items.Where(x => x.Alias.Contains(SearchText) || x.Title.Contains(SearchText));

@@ -59,7 +59,28 @@
                                                 <td>@i</td>
                                                 <td>@item.Code</td>
                                                 <td>@WebBanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
-                                                <td>@(item.Status == 0 ? "Chờ xác nhận" : "Đã xác nhận")</td>
+                                                <td>
+                                                    @if (item.Status == 1)
+                                                    {
+                                                        <span>Chưa xác nhận</span>
+                                                    }
+                                                    else if (item.Status == 2)
+                                                    {
+                                                        <span>Đã thanh toán</span>
+                                                    }
+                                                    else if (item.Status == 3)
+                                                    {
+                                                        <span>Đã xác nhận</span>
+                                                    }
+                                                    else if (item.Status == 4)
+                                                    {
+                                                        <span>Hoàn thành</span>
+                                                    }
+                                                    else if (item.Status == 5)
+                                                    {
+                                                        <span>Hủy</span>
+                                                    }
+                                                </td>
                                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                                 <td>
                                                     <a href="/account/DetailPurchaseOrder/@item.Id" class="btn btn-sm btn-success">Chi tiết đơn hàng</a>

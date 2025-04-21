@@ -172,18 +172,13 @@
                                                         if (promotionType != null)
                                                         {
                                                             <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price - (item.Price * promotionType) / 100, 0)₫<span>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</span></div>
-                                                            <div style="display:none;" class="in_product_price"> @WebBanHangOnline.Common.Common.FormatNumber(item.Price - (item.Price * promotionType) / 100, 0)₫</div>
+                                                            <div style="display:none;" class="in_product_price"> @WebBanHangOnline.Common.Common.FormatNumber(item.Price - (item.Price * promotionType) / 100, 0)</div>
                                                         }
                                                         else
                                                         {
-                                                <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</div>
-                                                <div style="display:none;" class="in_product_price"> @item.Price₫</div>
+                                                            <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</div>
+                                                            <div style="display:none;" class="in_product_price"> @item.Price</div>
                                                         }
-                                                    }
-                                                    else
-                                                    {
-                                                <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)₫</div>
-                                                <div style="display:none;" class="in_product_price"> @item.Price₫</div>
                                                     }
                                                 </div>
                                             </div>

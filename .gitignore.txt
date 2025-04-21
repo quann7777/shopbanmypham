@@ -1,0 +1,30 @@
+## Ignore Visual Studio temporary files, build results, and
+## user-specific files
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Bb]uild[Ll]og.*
+
+# VS Code files
+.vscode/
+
+# Visual Studio files
+.vs/
+
+# Packages
+packages/
+*.nupkg
+*.snupkg
+
+# Others
+_ReSharper*/
+*.DotSettings.user

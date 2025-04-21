@@ -52,47 +52,57 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             var item = db.Orders.Find(id);
             if (item != null)
             {
-                db.Orders.Attach(item);
                 item.Status = trangthai;
+                if (trangthai == 4)
+                {
+                    foreach (var orderDetail in item.OrderDetails)
+                    {
+                        var productDetail = db.ProductDetails.FirstOrDefault(x => x.Id == orderDetail.ProductDetailId);
+                        if (productDetail != null)
+                        {
+                            productDetail.Quantity += orderDetail.Quantity;
+                        }
+                    }
+                }
                 db.SaveChanges();
                 return Json(new { message = "Success", Success = true });
             }
             return Json(new { message = "Unsuccess", Success = false });
         }
 
-        public void ThongKe(string fromDate, string toDate)
-        {
-            var query = from o in db.Orders
-                        join od in db.OrderDetails on o.Id equals od.OrderId
-                        join p in db.ProductDetails on od.ProductDetailId equals p.Id
-                        select new
-                        {
-                            CreatedDate = o.CreatedDate,
-                            Quantity = od.Quantity,
-                            Price = od.Price,
-                            OriginalPrice = p.Product.Price
-                        };
-            if (!string.IsNullOrEmpty(fromDate))
-            {
-                DateTime start = DateTime.ParseExact(fromDate, "dd/MM/yyyy", CultureInfo.GetCultureInfo("vi-VN"));
-                query = query.Where(x => x.CreatedDate >= start);
-            }
-            if (!string.IsNullOrEmpty(toDate))
-            {
-                DateTime endDate = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.GetCultureInfo("vi-VN"));
-                query = query.Where(x => x.CreatedDate < endDate);
-            }
-            var result = query.GroupBy(x => DbFunctions.TruncateTime(x.CreatedDate)).Select(r => new
-            {
-                Date = r.Key.Value,
-                TotalBuy = r.Sum(x => x.OriginalPrice * x.Quantity), // tổng giá bán
-                TotalSell = r.Sum(x => x.Price * x.Quantity) // tổng giá mua
-            }).Select(x => new RevenueStatisticViewModel
-            {
-                Date = x.Date,
-                Benefit = x.TotalSell - x.TotalBuy,
-                Revenues = x.TotalSell
-            });
-        }
+        //public void ThongKe(string fromDate, string toDate)
+        //{
+        //    var query = from o in db.Orders
+        //                join od in db.OrderDetails on o.Id equals od.OrderId
+        //                join p in db.ProductDetails on od.ProductDetailId equals p.Id
+        //                select new
+        //                {
+        //                    CreatedDate = o.CreatedDate,
+        //                    Quantity = od.Quantity,
+        //                    Price = od.Price,
+        //                    OriginalPrice = p.Product.Price
+        //                };
+        //    if (!string.IsNullOrEmpty(fromDate))
+        //    {
+        //        DateTime start = DateTime.ParseExact(fromDate, "dd/MM/yyyy", CultureInfo.GetCultureInfo("vi-VN"));
+        //        query = query.Where(x => x.CreatedDate >= start);
+        //    }
+        //    if (!string.IsNullOrEmpty(toDate))
+        //    {
+        //        DateTime endDate = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.GetCultureInfo("vi-VN"));
+        //        query = query.Where(x => x.CreatedDate < endDate);
+        //    }
+        //    var result = query.GroupBy(x => DbFunctions.TruncateTime(x.CreatedDate)).Select(r => new
+        //    {
+        //        Date = r.Key.Value,
+        //        TotalBuy = r.Sum(x => x.OriginalPrice * x.Quantity), // tổng giá bán
+        //        TotalSell = r.Sum(x => x.Price * x.Quantity) // tổng giá mua
+        //    }).Select(x => new RevenueStatisticViewModel
+        //    {
+        //        Date = x.Date,
+        //        Benefit = x.TotalSell - x.TotalBuy,
+        //        Revenues = x.TotalSell
+        //    });
+        //}
     }
 }

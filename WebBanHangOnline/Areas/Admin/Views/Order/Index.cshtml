@@ -60,15 +60,19 @@
                                     {
                                         <span>Chưa thanh toán</span>
                                     }
-                                    else if(item.Status == 2)
+                                    else if (item.Status == 2)
                                     {
                                         <span>Đã thanh toán</span>
                                     }
                                     else if (item.Status == 3)
                                     {
-                                        <span>Hoàn thành</span>
+                                        <span>Đã xác nhận</span>
                                     }
                                     else if (item.Status == 4)
+                                    {
+                                        <span>Hoàn thành</span>
+                                    }
+                                    else if (item.Status == 5)
                                     {
                                         <span>Hủy</span>
                                     }
@@ -118,15 +122,18 @@
                     <label>Trạng thái</label>
                     <select class="form-control" id="ddTrangThai">
                         <option value="1">
-                            Chờ xác nhận
+                            Chưa thanh toán
                         </option>
                         <option value="2">
-                            Đã xác nhận
+                            Đã thanh toán
                         </option>
                         <option value="3">
-                            Hoàn thành
+                            Đã xác nhận
                         </option>
                         <option value="4">
+                            Hoàn thành
+                        </option>
+                        <option value="5">
                             Hủy
                         </option>
                     </select>
